@@ -1,8 +1,8 @@
 # Neural Magic ResNet Implementation
 
-The integration of DeepSparse with the [mlcommons/inference](https://github.com/mlcommons/inference) reference implementation can be found at [neuralmagic/inference](https://github.com/neuralmagic/inference/tree/deepsparse/vision/classification_and_detection/python).
+The integration of [DeepSparse](https://github.com/neuralmagic/deepsparse) with the [mlcommons/inference](https://github.com/mlcommons/inference) reference implementation can be found at [neuralmagic/inference](https://github.com/neuralmagic/inference/tree/deepsparse/vision/classification_and_detection/python).
 
-This integration of DeepSparse with the reference implementation can be executed through the [MLCommons Collective Mind framework (CK2)](https://github.com/mlcommons/ck) through a command like this:
+This integration of [DeepSparse](https://github.com/neuralmagic/deepsparse) with the reference implementation can be executed through the [MLCommons Collective Mind framework (CK2)](https://github.com/mlcommons/ck) through a command like this:
 
 ## ResNet50 Offline
 ```

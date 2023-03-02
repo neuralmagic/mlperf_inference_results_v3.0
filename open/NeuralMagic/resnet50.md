@@ -1,22 +1,8 @@
-<!--
-Copyright (c) 2021 - present / Neuralmagic, Inc. All Rights Reserved.
+# ResNet-50: Alternating Compressed/DeCompressed Training (AC/DC) applied to the ResNet model on ImageNet
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+[AC/DC: Alternating Compressed/DeCompressed Training of Deep Neural Networks](https://arxiv.org/abs/2106.12379) outperforms existing sparse training methods in accuracy at similar computational budgets; at high sparsity levels, AC/DC even outperforms existing methods that rely on accurate pre-trained dense models. An important property of AC/DC is that it allows co-training of dense and sparse models, yielding accurate sparse-dense model pairs at the end of the training process. This is useful in practice, where compressed variants may be desirable for deployment in resource-constrained settings without re-doing the entire training flow, and also provides us with insights into the accuracy gap between dense and compressed models.
 
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
-
-# ResNet-50 85% Pruning and Quantization for VNNI Recipe - Imagenet
-
-This recipe defines the hyperparams necessary to prune a ResNet-50 model to 85% (blocks of 4 for VNNI) and quantize it on an image classification task for the [ImageNet 2012 dataset](https://image-net.org/challenges/LSVRC/2012/).
+This recipe defines the hyperparams necessary to prune a ResNet-50 model to 85% and quantize it on an image classification task for the [ImageNet 2012 dataset](https://image-net.org/challenges/LSVRC/2012/).
 To vary hyperparams either edit the recipe or supply the --recipe_args argument to the training commands.
 For example, the following appended to the training commands will change the number of epochs:
 ```bash

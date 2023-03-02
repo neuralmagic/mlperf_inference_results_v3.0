@@ -1,12 +1,12 @@
 # Neural Magic's DeepSparse MLPerf Submission
 
-This is the repository of Neural Magic's DeepSparse submission for [MLPerf Inference Benchmark v3.0](https://www.mlperf.org/inference-overview/).
+This is the repository of Neural Magic's [DeepSparse](https://github.com/neuralmagic/deepsparse) submission for [MLPerf Inference Benchmark v3.0](https://www.mlperf.org/inference-overview/).
 
 ## BERT Results
 
-In this submission, we show two different methods of optimizing BERT-Large by combining various methods of compression covering: unstructured gradual pruning, quantization-aware training, and structural distillation. 
+In this submission, we show two different methods of optimizing BERT-Large by combining various methods of compression covering: unstructured gradual pruning, quantization-aware training, and structural distillation with [SparseML](https://github.com/neuralmagic/sparseml) and [DeepSparse](https://github.com/neuralmagic/deepsparse). 
 
-Maintaining >= 99% of the original BERT-Large F1 score and using the [DeepSparse Engine](https://github.com/neuralmagic/deepsparse), we show it is possible to:
+Maintaining >= 99% of the original BERT-Large F1 score and using [DeepSparse](https://github.com/neuralmagic/deepsparse), we show it is possible to:
 - Compress the FP32 dense weights by orders of magnitude from 1.3 GB to 10 MB.
 - Improve performance **1000x** from 5 samples/sec to >5000 samples/sec!
 
@@ -25,7 +25,7 @@ The benchmark implementation and models are stored in the [code/bert](code/bert)
 
 In this submission, we show how to optimize a ResNet50 model from [Torchvision](https://pytorch.org/vision/stable/models.html) trained on the [Imagenet 2012 dataset](https://image-net.org/challenges/LSVRC/2012/) by combining unstructured gradual pruning and quantization-aware training with [SparseML](https://github.com/neuralmagic/sparseml) and [DeepSparse](https://github.com/neuralmagic/deepsparse). 
 
-Maintaining >= 99% top1 validation accuracy of the baseline model, we show it is possible to:
+Maintaining >= 99% top1 validation accuracy of the baseline model and using [DeepSparse](https://github.com/neuralmagic/deepsparse), we show it is possible to:
 - Compress the FP32 dense weights from 97.7 MB to 11 MB.
 - Improve performance **13x** from 1.4k samples/sec to almost 20k samples/sec!
 
