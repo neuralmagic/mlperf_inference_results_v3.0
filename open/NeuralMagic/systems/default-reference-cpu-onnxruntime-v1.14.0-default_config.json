@@ -10,7 +10,7 @@
   "accelerators_per_node": "0",
   "cooling": "",
   "division": "open",
-  "framework": "deepsparse",
+  "framework": "onnxruntime v1.14.0",
   "host_memory_capacity": "773G",
   "host_memory_configuration": "",
   "host_networking": "",
@@ -29,7 +29,7 @@
   "other_software_stack": "Python: 3.10.6, GCC-11.3.0",
   "status": "available",
   "submitter": "NeuralMagic",
-  "sw_notes": "",
+  "sw_notes": "Powered by MLCommons Collective Mind framework (CK2). ",
   "system_name": "amd-TITANITE-18a4 (auto detected)",
-  "system_type": "datacenter,edge"
+  "system_type": "edge"
 }
