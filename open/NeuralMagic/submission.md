@@ -1,7 +1,7 @@
 
-# ResNet
+# ResNet50
 
-## ResNet50 85% Pruned Quant Offline - DeepSparse
+## ResNet50 Offline - DeepSparse
 
 ```
 cm run script --tags=run,mlperf,inference,generate-run-cmds,_all-modes,_submission,_full  \
@@ -14,7 +14,6 @@ cm run script --tags=run,mlperf,inference,generate-run-cmds,_all-modes,_submissi
    --model=resnet50 \
    --precision=int8 \
    --backend=deepsparse \
-   --hw_name=default \
    --device=cpu \
    --scenario=Offline \
    --mode=performance \
@@ -26,7 +25,6 @@ cm run script --tags=run,mlperf,inference,generate-run-cmds,_all-modes,_submissi
    --adr.mlperf-inference-implementation.num_threads=48 \
    --env.DEEPSPARSE_NUM_STREAMS=24 \
    --env.ENQUEUE_NUM_THREADS=2 \
-   --env.NM_BIND_THREADS_TO_CORES=1 \
    --target_qps=20480 \
    --offline_target_qps=20480
 ```
@@ -44,7 +42,6 @@ cm run script --tags=run,mlperf,inference,generate-run-cmds,_all-modes,_submissi
    --model=resnet50 \
    --precision=int8 \
    --backend=onnxruntime \
-   --hw_name=default \
    --device=cpu \
    --scenario=Offline \
    --mode=performance \
@@ -53,9 +50,9 @@ cm run script --tags=run,mlperf,inference,generate-run-cmds,_all-modes,_submissi
    --offline_target_qps=1536
 ```
 
-# BERT
+# BERT-Large
 
-## BERT-99%: oBERT-Large Offline
+## BERT-99%: oBERT-Large Offline - DeepSparse
 ```
 cm run script --tags=run,mlperf,inference,generate-run-cmds,_submission,_all-modes,_full  \
    --adr.python.name=mlperf \
@@ -67,35 +64,12 @@ cm run script --tags=run,mlperf,inference,generate-run-cmds,_submission,_all-mod
    --model=bert-99 \
    --precision=int8 \
    --backend=deepsparse \
-   --hw_name=default \
    --device=cpu \
    --scenario=Offline \
    --mode=performance \
    --execution_mode=valid \
    --adr.mlperf-inference-implementation.max_batchsize=384 --target_qps=1280 --offline_target_qps=1280 \
-   --adr.mlperf-inference-implementation.model=zoo:nlp/question_answering/obert-large/pytorch/huggingface/squad/pruned95_quant-none-vnni --env.NM_BIND_THREADS_TO_CORES=1
-```
-
-## BERT-99%: MobileBERT SingleStream
-
-```
-cm run script --tags=run,mlperf,inference,generate-run-cmds,_submission,_all-modes,_full  \ 
-   --adr.python.name=mlperf \
-   --adr.python.version_min=3.8 \
-   --adr.compiler.tags=gcc \
-   --submitter=NeuralMagic \
-   --implementation=reference \
-   --compliance=no \
-   --model=bert-99 \
-   --precision=int8 \
-   --backend=deepsparse \
-   --hw_name=default \
-   --device=cpu \
-   --scenario=SingleStream \
-   --mode=performance \
-   --execution_mode=valid \
-   --adr.mlperf-inference-implementation.max_batchsize=1 \
-   --adr.mlperf-inference-implementation.model=/home/neuralmagic/models/mobilebert_latest.onnx --env.NM_BIND_THREADS_TO_CORES=1  --env.WAND_OPT_FLAGS=default,~pyramids --clean
+   --adr.mlperf-inference-implementation.model=zoo:nlp/question_answering/obert-large/pytorch/huggingface/squad/pruned95_quant-none-vnni
 ```
 
 ## BERT-99%: MobileBERT Offline
@@ -111,19 +85,16 @@ cm run script --tags=run,mlperf,inference,generate-run-cmds,_submission,_all-mod
    --model=bert-99 \
    --precision=int8 \
    --backend=deepsparse \
-   --hw_name=default \
    --device=cpu \
    --scenario=Offline \
    --mode=performance \
    --execution_mode=valid \
    --adr.mlperf-inference-implementation.max_batchsize=384 \
    --target_qps=5120 --offline_target_qps=5120 \
-   --adr.mlperf-inference-implementation.model=/home/neuralmagic/models/mobilebert_latest.onnx --env.NM_BIND_THREADS_TO_CORES=1 --env.DEEPSPARSE_SEQLENS="64,128,192,256,384"
+   --adr.mlperf-inference-implementation.model=zoo:nlp/question_answering/mobilebert-none/pytorch/huggingface/squad/14layer_pruned50_quant-none-vnni --env.DEEPSPARSE_SEQLENS="64,128,192,256,384"
 ```
 
-# REPLACE MODEL PATH
-
-## BERT-99.9%: MobileBERT Offline
+## BERT-99.9%: MobileBERT Offline - DeepSparse
 
 ```
 cm run script --tags=run,mlperf,inference,generate-run-cmds,_submission,_all-modes,_full  \
@@ -136,37 +107,16 @@ cm run script --tags=run,mlperf,inference,generate-run-cmds,_submission,_all-mod
    --model=bert-99 \
    --precision=int8 \
    --backend=deepsparse \
-   --hw_name=default \
    --device=cpu \
    --scenario=Offline \
    --mode=performance \
    --execution_mode=valid \
    --adr.mlperf-inference-implementation.max_batchsize=384 --target_qps=3072 --offline_target_qps=3072 \
-   --adr.mlperf-inference-implementation.model=/home/neuralmagic/models/oBERT-MobileBERT_qat.onnx --env.NM_BIND_THREADS_TO_CORES=1 --env.DEEPSPARSE_SEQLENS="64,128,192,256,384"
+   --adr.mlperf-inference-implementation.model=zoo:nlp/question_answering/mobilebert-none/pytorch/huggingface/squad/base_quant-none --env.DEEPSPARSE_SEQLENS="64,128,192,256,384"
 ```
 
-# REPLACE MODEL PATH
 
-
-## BERT: BERT-Large Offline - ONNXRuntime
-
-```
-cm run script --tags=run,mlperf,inference,generate-run-cmds,_submission,_all-modes,_full  \
-   --adr.python.name=mlperf \
-   --adr.python.version_min=3.8 \
-   --adr.compiler.tags=gcc \
-   --submitter=NeuralMagic \
-   --implementation=reference \
-   --compliance=no \
-   --model=bert-99 \
-   --precision=int8 \
-   --backend=onnxruntime \
-   --hw_name=default \
-   --device=cpu \
-   --scenario=Offline \
-   --mode=performance \
-   --execution_mode=valid
-```
+## BERT-99%: BERT-Large Offline - ONNXRuntime
 
 ```
 cm run script --tags=run,mlperf,inference,generate-run-cmds,_submission,_all-modes,_full  \
@@ -179,7 +129,6 @@ cm run script --tags=run,mlperf,inference,generate-run-cmds,_submission,_all-mod
    --model=bert-99 \
    --precision=fp32 \
    --backend=onnxruntime \
-   --hw_name=default \
    --device=cpu \
    --scenario=Offline \
    --mode=performance \
