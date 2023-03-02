@@ -7,8 +7,8 @@ This is the repository of Neural Magic's DeepSparse submission for [MLPerf Infer
 In this submission, we show two different methods of optimizing BERT-Large by combining various methods of compression covering: unstructured gradual pruning, quantization-aware training, and structural distillation. 
 
 Maintaining >= 99% of the original BERT-Large F1 score and using the [DeepSparse Engine](https://github.com/neuralmagic/deepsparse), we show it is possible to:
-- Compress the FP32 dense weights by orders of magnitude from 1.3 GB to 90-10 MB.
-- Improve throughput performance from 5 samples/sec to 5000 samples/sec
+- Compress the FP32 dense weights by orders of magnitude from 1.3 GB to 10 MB.
+- Improve performance **1000x** from 5 samples/sec to >5000 samples/sec!
 
 Our MLPerf Inference v3.0 submission contains the following results for the BERT-Large SQuAD v1.1 question answering task:
 
@@ -20,6 +20,23 @@ Our MLPerf Inference v3.0 submission contains the following results for the BERT
 | [oBERT-MobileBERT 99%](obert_mobilebert.md)              | DeepSparse  | INT8 | 9.56 MB  | 90.41 (R=99.49%)	  | 5578.73  |
 
 The benchmark implementation and models are stored in the [code/bert](code/bert) directory which contains a `README.md` detailing instructions on how to set up the benchmark. An example of the commands used to generate this submission is stored in [submission.md](submission.md).
+
+## ResNet50 Results
+
+In this submission, we show how to optimize a ResNet50 model from [Torchvision](https://pytorch.org/vision/stable/models.html) trained on the [Imagenet 2012 dataset](https://image-net.org/challenges/LSVRC/2012/) by combining unstructured gradual pruning and quantization-aware training with [SparseML](https://github.com/neuralmagic/sparseml) and [DeepSparse](https://github.com/neuralmagic/deepsparse). 
+
+Maintaining >= 99% top1 validation accuracy of the baseline model, we show it is possible to:
+- Compress the FP32 dense weights from 97.7 MB to 11 MB.
+- Improve performance **13x** from 1.4k samples/sec to almost 20k samples/sec!
+
+Our MLPerf Inference v3.0 submission contains the following results for the ResNet50 ImageNet 2012 classification task:
+
+| Benchmark      | Engine  | Precision | Compressed File Size | ImageNet 2012 Top1 Accuracy (R=X% of Base Accuracy) |  Offline Throughput [samples/sec]  |
+|:----------------:|:-----------:|-----------:|:-----------:|:------:|:-------:|:--------:|
+| [ResNet50 Baseline](https://zenodo.org/record/4735647/) | ONNXRuntime | FP32 | 97.7 MB  | 76.456% (R=100.00%)	| 1488.4   |
+| [ResNet50 99%](resnet50.md)                             | DeepSparse  | INT8 | 11.0 MB  | 75.712% (R=99.02%)	| 19632.1  |
+
+The benchmark implementation and models are stored in the [code/resnet50](code/resnet50) directory which contains a `README.md` detailing instructions on how to set up the benchmark. An example of the commands used to generate this submission is stored in [submission.md](submission.md).
 
 The benchmarks were evaluated using a server with two 4th Gen AMD EPYC 9654 (Genoa) CPUs with 96 cores each.
 
@@ -34,7 +51,7 @@ The benchmarks were evaluated using a server with two 4th Gen AMD EPYC 9654 (Gen
 ## Citation info
 If you find our models useful, please consider citing our work:
 ```bibtex
-@misc{https://doi.org/10.48550/arxiv.2203.07259,
+@article{kurtic:2022,
   doi = {10.48550/ARXIV.2203.07259},
   url = {https://arxiv.org/abs/2203.07259},
   author = {Kurtic, Eldar and Campos, Daniel and Nguyen, Tuan and Frantar, Elias and Kurtz, Mark and Fineran, Benjamin and Goin, Michael and Alistarh, Dan},
@@ -46,7 +63,7 @@ If you find our models useful, please consider citing our work:
 ```
 
 ```bibtex
-@misc{https://doi.org/10.48550/arxiv.2106.12379,
+@article{peste:2021,
   doi = {10.48550/ARXIV.2106.12379},
   url = {https://arxiv.org/abs/2106.12379},
   author = {Peste, Alexandra and Iofinova, Eugenia and Vladu, Adrian and Alistarh, Dan},
