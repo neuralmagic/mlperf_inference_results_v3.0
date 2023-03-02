@@ -13,7 +13,7 @@ Maintaining >= 99% of the original BERT-Large F1 score and using the [DeepSparse
 Our MLPerf Inference v3.0 submission contains the following results for the BERT-Large SQuAD v1.1 question answering task:
 
 | Benchmark      | Engine  | Precision | Compressed File Size | SQuAD v1.1 F1 Score (R=X% of Base Accuracy) |  Offline Throughput [samples/sec]  |
-|:----------------:|:-----------:|-----------:|:-----------:|:------:|:-------:|:--------:|
+|:----------------:|:-----------:|-----------:|:-----------:|:------:|:-------:|
 | [BERT-Large Baseline](https://zenodo.org/record/3733910) | ONNXRuntime | FP32 | 1.3 GB   | 90.874 (R=100.00%)	| 4.60     |
 | [oBERT-Large 99%](obert_large.md)                        | DeepSparse  | INT8 | 38.2 MB  | 90.03 (R=99.07%)	  | 1367.14  |
 | [oBERT-MobileBERT 99.9%](obert_mobilebert.md)            | DeepSparse  | INT8 | 19.45 MB | 90.80 (R=99.92%)	  | 3275.62  |
@@ -32,7 +32,7 @@ Maintaining >= 99% top1 validation accuracy of the baseline model, we show it is
 Our MLPerf Inference v3.0 submission contains the following results for the ResNet50 ImageNet 2012 classification task:
 
 | Benchmark      | Engine  | Precision | Compressed File Size | ImageNet 2012 Top1 Accuracy (R=X% of Base Accuracy) |  Offline Throughput [samples/sec]  |
-|:----------------:|:-----------:|-----------:|:-----------:|:------:|:-------:|:--------:|
+|:----------------:|:-----------:|-----------:|:-----------:|:------:|:-------:|
 | [ResNet50 Baseline](https://zenodo.org/record/4735647/) | ONNXRuntime | FP32 | 97.7 MB  | 76.456% (R=100.00%)	| 1488.4   |
 | [ResNet50 99%](resnet50.md)                             | DeepSparse  | INT8 | 11.0 MB  | 75.712% (R=99.02%)	| 19632.1  |
 
