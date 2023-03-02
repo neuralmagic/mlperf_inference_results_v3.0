@@ -23,3 +23,5 @@ cm run script --tags=run,mlperf,inference,generate-run-cmds,_submission,_all-mod
    --adr.mlperf-inference-implementation.max_batchsize=384 --target_qps=1280 --offline_target_qps=1280 \
    --adr.mlperf-inference-implementation.model=zoo:nlp/question_answering/obert-large/pytorch/huggingface/squad/pruned95_quant-none-vnni
 ```
+
+ONNXRuntime can be accessed in a similar way through setting `--backend=onnxruntime` with default settings.

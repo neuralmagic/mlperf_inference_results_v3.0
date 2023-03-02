@@ -31,3 +31,4 @@ cm run script --tags=run,mlperf,inference,generate-run-cmds,_all-modes,_submissi
    --offline_target_qps=20480
 ```
 
+ONNXRuntime can be accessed in a similar way through setting `--backend=onnxruntime` with default settings.
